@@ -1,0 +1,57 @@
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio Version 17
+VisualStudioVersion = 17.5.2.0
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "APIGateway", "APIGateway\APIGateway.csproj", "{ABE66B30-BD47-A7B2-B17B-5BA67959B026}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "OrdersService", "OrderService\OrdersService.csproj", "{CE3A2F9A-D5D9-4A8B-9B1F-5B7A4E3D8E2D}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "PaymentsService", "PaymentsService\PaymentsService.csproj", "{F5E8D6A7-C2E9-4B0F-8C1A-9D1A2E3D4E5F}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "OrdersService.Tests", "OrdersService.Tests\OrdersService.Tests.csproj", "{A1B2C3D4-E5F6-4A7B-8C9D-0E1F2A3B4C5D}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "PaymentsService.Tests", "PaymentsService.Tests\PaymentsService.Tests.csproj", "{B2C3D4E5-F6A7-4B8C-9D0E-1F2A3B4C5D6E}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "front", "front", "{E6C7D3B2-F8A9-4E8B-B707-A7F9B3A3E8D8}"
+	ProjectSection(SolutionItems) = preProject
+		front\index.html = front\index.html
+		front\style.css = front\style.css
+		front\script.js = front\script.js
+		front\nginx.conf = front\nginx.conf
+		front\Dockerfile = front\Dockerfile
+	EndProjectSection
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{ABE66B30-BD47-A7B2-B17B-5BA67959B026}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{ABE66B30-BD47-A7B2-B17B-5BA67959B026}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{ABE66B30-BD47-A7B2-B17B-5BA67959B026}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{ABE66B30-BD47-A7B2-B17B-5BA67959B026}.Release|Any CPU.Build.0 = Release|Any CPU
+		{CE3A2F9A-D5D9-4A8B-9B1F-5B7A4E3D8E2D}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{CE3A2F9A-D5D9-4A8B-9B1F-5B7A4E3D8E2D}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{CE3A2F9A-D5D9-4A8B-9B1F-5B7A4E3D8E2D}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{CE3A2F9A-D5D9-4A8B-9B1F-5B7A4E3D8E2D}.Release|Any CPU.Build.0 = Release|Any CPU
+		{F5E8D6A7-C2E9-4B0F-8C1A-9D1A2E3D4E5F}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{F5E8D6A7-C2E9-4B0F-8C1A-9D1A2E3D4E5F}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{F5E8D6A7-C2E9-4B0F-8C1A-9D1A2E3D4E5F}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{F5E8D6A7-C2E9-4B0F-8C1A-9D1A2E3D4E5F}.Release|Any CPU.Build.0 = Release|Any CPU
+		{A1B2C3D4-E5F6-4A7B-8C9D-0E1F2A3B4C5D}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{A1B2C3D4-E5F6-4A7B-8C9D-0E1F2A3B4C5D}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{A1B2C3D4-E5F6-4A7B-8C9D-0E1F2A3B4C5D}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{A1B2C3D4-E5F6-4A7B-8C9D-0E1F2A3B4C5D}.Release|Any CPU.Build.0 = Release|Any CPU
+		{B2C3D4E5-F6A7-4B8C-9D0E-1F2A3B4C5D6E}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{B2C3D4E5-F6A7-4B8C-9D0E-1F2A3B4C5D6E}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{B2C3D4E5-F6A7-4B8C-9D0E-1F2A3B4C5D6E}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{B2C3D4E5-F6A7-4B8C-9D0E-1F2A3B4C5D6E}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(ExtensibilityGlobals) = postSolution
+		SolutionGuid = {20318E38-BC1E-46A2-A1C5-D9B85FB8B802}
+	EndGlobalSection
+EndGlobal

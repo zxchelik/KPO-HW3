@@ -1,0 +1,92 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Order & Payment System</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <div class="container">
+        <header>
+            <h1>Order & Payment System</h1>
+        </header>
+
+        <div class="tabs">
+            <button class="tab-btn active" data-tab="account">Account</button>
+            <button class="tab-btn" data-tab="orders">Orders</button>
+        </div>
+
+        <div class="tab-content active" id="account-tab">
+            <div class="card">
+                <h2>Account Management</h2>
+                <div class="form-group">
+                    <label for="userId">User ID:</label>
+                    <input type="text" id="userId" placeholder="Enter your user ID">
+                </div>
+                <div class="actions">
+                    <button id="createAccount" class="btn primary">Create Account</button>
+                    <button id="checkBalance" class="btn secondary">Check Balance</button>
+                </div>
+                <div id="balance-display" class="result-display">
+                    <h3>Balance: <span id="balance-amount">-</span></h3>
+                </div>
+                <div class="form-group">
+                    <label for="topupAmount">Top-up Amount:</label>
+                    <input type="number" id="topupAmount" placeholder="Enter amount" min="0" step="0.01">
+                </div>
+                <button id="topupAccount" class="btn primary">Top Up</button>
+            </div>
+        </div>
+
+        <div class="tab-content" id="orders-tab">
+            <div class="card">
+                <h2>Create Order</h2>
+                <div class="form-group">
+                    <label for="orderUserId">User ID:</label>
+                    <input type="text" id="orderUserId" placeholder="Enter your user ID">
+                </div>
+                <div class="form-group">
+                    <label for="orderAmount">Amount:</label>
+                    <input type="number" id="orderAmount" placeholder="Enter amount" min="0" step="0.01">
+                </div>
+                <div class="form-group">
+                    <label for="orderDescription">Description:</label>
+                    <input type="text" id="orderDescription" placeholder="Enter order description">
+                </div>
+                <button id="createOrder" class="btn primary">Create Order</button>
+            </div>
+
+            <div class="card">
+                <h2>Order Management</h2>
+                <div class="form-group">
+                    <label for="listUserId">User ID:</label>
+                    <input type="text" id="listUserId" placeholder="Enter user ID to list orders">
+                </div>
+                <button id="listOrders" class="btn secondary">List Orders</button>
+                <div class="form-group">
+                    <label for="orderId">Order ID:</label>
+                    <input type="text" id="orderId" placeholder="Enter order ID to get details">
+                </div>
+                <button id="getOrder" class="btn secondary">Get Order Details</button>
+            </div>
+
+            <div class="card" id="orders-list">
+                <h2>Orders</h2>
+                <div id="orders-container" class="result-display">
+                    <p>No orders to display</p>
+                </div>
+            </div>
+
+            <div class="card" id="order-details">
+                <h2>Order Details</h2>
+                <div id="order-details-container" class="result-display">
+                    <p>No order selected</p>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <script src="script.js"></script>
+</body>
+</html> 

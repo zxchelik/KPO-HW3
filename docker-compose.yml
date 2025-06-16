@@ -1,0 +1,136 @@
+services:
+  redis:
+    image: redis:7-alpine
+    container_name: redis
+    ports:
+      - "6379:6379"
+    networks:
+      - msnet
+
+  orders-db:
+    image: postgres:13-alpine
+    container_name: orders-db
+    environment:
+      POSTGRES_USER: postgres
+      POSTGRES_PASSWORD: postgres
+      POSTGRES_DB: ordersdb
+    volumes:
+      - orders-data:/var/lib/postgresql/data
+    ports:
+      - "5434:5432"
+    healthcheck:
+      test: ["CMD", "pg_isready", "-h", "orders-db", "-U", "postgres"]
+      interval: 5s
+      timeout: 5s
+      retries: 5
+    networks:
+      - msnet
+
+  payments-db:
+    image: postgres:13-alpine
+    container_name: payments-db
+    environment:
+      POSTGRES_USER: postgres
+      POSTGRES_PASSWORD: postgres
+      POSTGRES_DB: paymentsdb
+    volumes:
+      - payments-data:/var/lib/postgresql/data
+    ports:
+      - "5435:5432"
+    healthcheck:
+      test: ["CMD", "pg_isready", "-h", "payments-db", "-U", "postgres"]
+      interval: 5s
+      timeout: 5s
+      retries: 5
+    networks:
+      - msnet
+
+  orders-service:
+    build:
+      context: ./OrderService
+      dockerfile: Dockerfile
+    container_name: orders-service
+    ports:
+      - "5003:80"
+    environment:
+      ASPNETCORE_ENVIRONMENT: Production
+      ASPNETCORE_URLS: "http://+:80"
+      ConnectionStrings__OrdersDb: "Host=orders-db;Database=ordersdb;Username=postgres;Password=postgres"
+      Redis__ConnectionString: "redis:6379"
+    depends_on:
+      - redis
+      - orders-db
+    entrypoint:
+      - sh
+      - -c
+      - |
+        echo "Waiting for dependencies..."
+        sleep 10
+        exec dotnet OrdersService.dll
+    restart: on-failure
+    networks:
+      - msnet
+
+  payments-service:
+    build:
+      context: ./PaymentsService
+      dockerfile: Dockerfile
+    container_name: payments-service
+    ports:
+      - "5002:80"
+    environment:
+      ASPNETCORE_ENVIRONMENT: Production
+      ASPNETCORE_URLS: "http://+:80"
+      ConnectionStrings__PaymentsDb: "Host=payments-db;Database=paymentsdb;Username=postgres;Password=postgres"
+      Redis__ConnectionString: "redis:6379"
+    depends_on:
+      - redis
+      - payments-db
+    entrypoint:
+      - sh
+      - -c
+      - |
+        echo "Waiting for dependencies..."
+        sleep 10
+        exec dotnet PaymentsService.dll
+    restart: on-failure
+    networks:
+      - msnet
+
+  api-gateway:
+    build:
+      context: ./APIGateway
+      dockerfile: Dockerfile
+    container_name: api-gateway
+    environment:
+      ASPNETCORE_ENVIRONMENT: Production
+      ASPNETCORE_URLS: "http://+:80"
+    ports:
+      - "8000:80"
+    depends_on:
+      - orders-service
+      - payments-service
+    restart: on-failure
+    networks:
+      - msnet
+
+  frontend:
+    build:
+      context: ./front
+      dockerfile: Dockerfile
+    container_name: frontend
+    ports:
+      - "80:80"
+    depends_on:
+      - api-gateway
+    restart: on-failure
+    networks:
+      - msnet
+
+volumes:
+  orders-data:
+  payments-data:
+
+networks:
+  msnet:
+    driver: bridge
