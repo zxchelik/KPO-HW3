@@ -1,0 +1,58 @@
+## Build artifacts
+bin/
+obj/
+out/
+app/build/
+
+## User-specific files
+*.user
+*.suo
+*.userosscache
+*.sln.docstates
+
+## Rider
+../../RiderProjects/KPO/HW/KPO_minihw2/.idea/
+*.sln.iml
+
+## Visual Studio
+.vscode/
+.vs/
+*.csproj.user
+
+## ASP.NET secrets (if used)
+secrets.json
+
+## Logs
+*.log
+logs/
+
+## Dependency caches
+.nuget/
+packages/
+*.nupkg
+
+## Coverage reports
+TestResults/
+coverage/
+coverage*.json
+coverage*.xml
+coverage*.html
+
+## Docker
+*.tar
+docker-compose.override.yml
+**/Dockerfile.*
+
+## OS artifacts
+.DS_Store
+Thumbs.db
+
+## Runtime files
+.env
+.env.*
+
+## Swagger generated (if any)
+swagger/
+
+## Others
+_ReSharper*/
