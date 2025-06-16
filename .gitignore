@@ -11,7 +11,7 @@ app/build/
 *.sln.docstates
 
 ## Rider
-../../RiderProjects/KPO/HW/KPO_minihw2/.idea/
+.idea/
 *.sln.iml
 
 ## Visual Studio
